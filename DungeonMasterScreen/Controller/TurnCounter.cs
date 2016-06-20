@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using DungeonMasterScreen.Events;
 
+/// <summary>
+/// This is controller responsible for controlling turn order
+/// </summary>
 namespace DungeonMasterScreen.Controller
 {
 
