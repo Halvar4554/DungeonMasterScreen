@@ -30,8 +30,15 @@ namespace DungeonMasterScreen.Controller
 
         private void TurnCounter_ActiveMonstersChanged(object sender, MonsterCountChangedEventArgs e)
         {
-           //Tady se provede logika vyhodnocení, jestli se přidalo monstrum, nebo jestli se odebralo.
-           //Metody Increase a Decrease se udělají private a odstraní se jejich volání z CombatControlleru.
+            int difference = e.NewCount - e.OldCount;
+            if (difference>0)
+            {
+                increaseNumberOfCombatants();
+            }
+            else
+            {
+                decreaseNumberOfCombatants();
+            }
         }
 
         public void NextInOrder()
@@ -64,12 +71,12 @@ namespace DungeonMasterScreen.Controller
             OnChange(e);
         }
 
-        public void IncreaseNumberOfCombatants()
+        private void increaseNumberOfCombatants()
         {
             CountOfMonsters++;
         }
 
-        public void DecreaseNumberOfCombatants()
+        public void decreaseNumberOfCombatants()
         {
             if (CountOfMonsters>0)
             {

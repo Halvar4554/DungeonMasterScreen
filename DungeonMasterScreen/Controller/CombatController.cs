@@ -43,7 +43,6 @@ namespace DungeonMasterScreen.Controller
             Monster monster = MonsterParser.createNewInstanceOfMonster(dto);
             monster.MonsterChange += Monster_MonsterChange;
             getMonsterCave().AddMonster(monster);
-            turnCounter.IncreaseNumberOfCombatants();
             fireMonsterAddedEvent(monster.Name, monster.Initiative);
         }
 
@@ -76,7 +75,6 @@ namespace DungeonMasterScreen.Controller
             Monster monster = getMonsterCave().FindActiveMonsterById(dto.id);
             monster.MonsterChange -= Monster_MonsterChange;
             getMonsterCave().KillMonster(monster.Id);
-            turnCounter.DecreaseNumberOfCombatants();
             fireMonsterRemovedEvent(monster.Name);
         }
 
