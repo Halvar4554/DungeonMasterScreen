@@ -18,34 +18,57 @@ namespace DungeonMasterScreen.Files
             List<Monster> monsters = new List<Monster>();
             using (StreamReader reader = new StreamReader(Constants.MONSTER_MANUAL_FILE))
             {
-                string fileFormat = reader.ReadLine();
-                if (fileFormat.Equals(Constants.MONSTER_MANUAL_FORMAT))
+                try
                 {
-                    string monsterLine;
-                    while ((monsterLine=reader.ReadLine())!=null)
+                    string fileFormat = reader.ReadLine();
+                    if (fileFormat.Equals(Constants.MONSTER_MANUAL_FORMAT))
                     {
-                        Monster monster = MonsterParser.parseMonsterFromString(monsterLine);
-                        monsters.Add(monster);
+                        string monsterLine;
+
+                        while ((monsterLine = reader.ReadLine()) != null)
+                        {
+                            Monster monster = MonsterParser.parseMonsterFromString(monsterLine);
+                            monsters.Add(monster);
+                        }
                     }
+                }
+                catch (Exceptions.MonsterParseException e)
+                {
+                    throw new FileFormatException("Nepodařilo se přečíst bestiář.");
                 }
             }
             return monsters;
         }
 
-        public void SaveMonsterManual(List<Monster> monsters) {
-            using (StreamWriter writer=new StreamWriter(Constants.MONSTER_MANUAL_FILE))
+        public void SaveMonsterManual(List<Monster> monsters)
+        {
+            using (StreamWriter writer = new StreamWriter(Constants.MONSTER_MANUAL_FILE))
             {
-                writer.WriteLine(Constants.MONSTER_MANUAL_FORMAT);
-                foreach (Monster monster in monsters)
+                try
                 {
-                    writer.WriteLine(MonsterParser.parseMonsterIntoString(monster));
+                    writer.WriteLine(Constants.MONSTER_MANUAL_FORMAT);
+                    foreach (Monster monster in monsters)
+                    {
+                        writer.WriteLine(MonsterParser.parseMonsterIntoString(monster));
+                    }
                 }
+                catch (IOException e)
+                {
+                    throw new Exceptions.MonsterManualOpenException(string.Format("Nepodařilo se uložit bestiář z důvodu {0}",e.Message));
+                }
+                
             }
         }
 
+        /// <summary>
+        /// Importuje jedno monstrum ze souboru. Soubor musí mít formát uloženého monstra.
+        /// Metoda vyhazuje dvě výjimky: <see cref="IOException"/> v případě, že dojde k chbě čtení ze souboru nebo <see cref="FileFormatException"/> pokud je soubor ve špatném formátu.
+        /// </summary>
+        /// <param name="filePath">Cesta k souboru, ze kterého se má monstrum načíst</param>
+        /// <returns>Novou instanci <see cref="Monster"/> </returns>
         public Monster ImportMonster(string filePath)
         {
-            using (StreamReader reader=new StreamReader(filePath))
+            using (StreamReader reader = new StreamReader(filePath))
             {
                 string fileFormat = reader.ReadLine();
                 if (fileFormat.Equals(Constants.MONSTER_FILE_FORMAT))
@@ -56,9 +79,9 @@ namespace DungeonMasterScreen.Files
             throw new FileFormatException("Tohle není soubor s monstrem!");
         }
 
-        public void ExportMonster(string filePath,Monster monster)
+        public void ExportMonster(string filePath, Monster monster)
         {
-            using (StreamWriter writer=new StreamWriter(filePath))
+            using (StreamWriter writer = new StreamWriter(filePath))
             {
                 writer.WriteLine(Constants.MONSTER_FILE_FORMAT);
                 writer.WriteLine(monster.ToString());

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DungeonMasterScreen.Model;
 using DungeonMasterScreen.Files;
 using DungeonMasterScreen.Exceptions;
+using System.IO;
 
 namespace DungeonMasterScreen.Controller
 {
@@ -115,7 +116,14 @@ namespace DungeonMasterScreen.Controller
         {
             if (isManualOpen)
             {
-                fileController.SaveMonsterManual(getMonsterCave().GetAllReserveMonsters());
+                try
+                {
+                    fileController.SaveMonsterManual(getMonsterCave().GetAllReserveMonsters());
+                }
+                catch (IOException e)
+                {
+                    throw new MonsterManualOpenException(string.Format("Nepodařilo se zapsat do bestiáře z důvodu:{0}", e.Message));
+                }                
                 isManualOpen = false;
             }
             else
@@ -126,7 +134,15 @@ namespace DungeonMasterScreen.Controller
 
         public void ImportMonster(string filePath)
         {
-            Monster monster = fileController.ImportMonster(filePath);
+            Monster monster = null;
+            try
+            {
+                monster = fileController.ImportMonster(filePath);
+            }
+            catch (FileFormatException e)
+            {
+                throw new MonsterManualOpenException(string.Format("Nepodařilo se importovat monstrum ze souboru {0} zu důvodu {1}",filePath,e.Message));
+            }            
             if (monster!=null)
             {
                 getMonsterCave().AddReserveMonster(monster); 

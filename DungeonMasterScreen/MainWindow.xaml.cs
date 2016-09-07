@@ -49,7 +49,15 @@ namespace DungeonMasterScreen
         {
             InitializeComponent();
             //TODO: udělat inicializaci a načtení monster manualu.
-            MonsterCaveFactory.InitFactory(new FileController().ReadMonsterManual());
+            try
+            {
+                MonsterCaveFactory.InitFactory(new FileController().ReadMonsterManual());
+            }
+            catch (FileFormatException e)
+            {
+                MonsterCaveFactory.InitFactory(new List<Monster>());
+                System.Windows.MessageBox.Show(e.Message,"Chyba otevření Monster manuálu",MessageBoxButton.OK);
+            }            
             combatController = new CombatController();
             combatController.BattleLogEvent += CombatController_BattleLogEvent;
             fightlistView.ItemsSource = fightList;
@@ -471,7 +479,7 @@ namespace DungeonMasterScreen
                     {
                         manualController.ImportMonster(dialog.FileName);
                     }
-                    catch (FormatException ex)
+                    catch (MonsterManualOpenException ex)
                     {
 
                         System.Windows.MessageBox.Show(ex.Message, "Chyba importu", MessageBoxButton.OK);
