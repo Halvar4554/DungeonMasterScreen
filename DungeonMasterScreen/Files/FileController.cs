@@ -7,6 +7,7 @@ using System.IO;
 using DungeonMasterScreen.Model;
 using DungeonMasterScreen.Core;
 using DungeonMasterScreen.Controller;
+using DungeonMasterScreen.Properties;
 using System.Reflection;
 
 namespace DungeonMasterScreen.Files
@@ -34,7 +35,7 @@ namespace DungeonMasterScreen.Files
                 }
                 catch (Exceptions.MonsterParseException e)
                 {
-                    throw new FileFormatException("Nepodařilo se přečíst bestiář.");
+                    throw new FileFormatException(Resources.FC_OPEN_FAILURE);
                 }
             }
             return monsters;
@@ -54,7 +55,7 @@ namespace DungeonMasterScreen.Files
                 }
                 catch (IOException e)
                 {
-                    throw new Exceptions.MonsterManualOpenException(string.Format("Nepodařilo se uložit bestiář z důvodu {0}",e.Message));
+                    throw new Exceptions.MonsterManualOpenException(string.Format(Resources.FC_SAVE_FAILURE,e.Message));
                 }
                 
             }
@@ -76,7 +77,7 @@ namespace DungeonMasterScreen.Files
                     return MonsterParser.parseMonsterFromString(reader.ReadLine());
                 }
             }
-            throw new FileFormatException("Tohle není soubor s monstrem!");
+            throw new FileFormatException(Resources.FC_FORMAT_ERROR);
         }
 
         public void ExportMonster(string filePath, Monster monster)

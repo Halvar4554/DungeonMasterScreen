@@ -1,19 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Forms;
-using System.ComponentModel;
 using DungeonMasterScreen.Controller;
 using DungeonMasterScreen.Model;
 using DungeonMasterScreen.Exceptions;
@@ -21,11 +10,12 @@ using System.Collections.ObjectModel;
 using DungeonMasterScreen.Files;
 using DungeonMasterScreen.Core;
 using System.IO;
+using DungeonMasterScreen.Properties;
 
 namespace DungeonMasterScreen
 {
 
-    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -56,7 +46,7 @@ namespace DungeonMasterScreen
             catch (FileFormatException e)
             {
                 MonsterCaveFactory.InitFactory(new List<Monster>());
-                System.Windows.MessageBox.Show(e.Message,"Chyba otevření Monster manuálu",MessageBoxButton.OK);
+                System.Windows.MessageBox.Show(e.Message,Properties.Resources.MW_MANUAL_OPEN_ERROR,MessageBoxButton.OK);
             }            
             combatController = new CombatController();
             combatController.BattleLogEvent += CombatController_BattleLogEvent;
@@ -245,7 +235,7 @@ namespace DungeonMasterScreen
             }
             catch (ValidationException exception)
             {
-                System.Windows.MessageBox.Show(exception.Message, "Chyba validace!", MessageBoxButton.OK);
+                System.Windows.MessageBox.Show(exception.Message, Properties.Resources.MW_VALIDATION_ERROR_TITLE, MessageBoxButton.OK);
             }
         }
 
@@ -323,7 +313,7 @@ namespace DungeonMasterScreen
             }
             else
             {
-                System.Windows.MessageBox.Show("Zadaná hodnota musí být číslo!", "Chyba", MessageBoxButton.OK);
+                System.Windows.MessageBox.Show(Properties.Resources.MW_NUMBER_VALIDATION_ERROR, Properties.Resources.MW_ERROR_TITLE, MessageBoxButton.OK);
             }
         }
 
@@ -353,7 +343,7 @@ namespace DungeonMasterScreen
             }
             catch (ValidationException exception)
             {
-                System.Windows.MessageBox.Show(exception.Message, "Chyba validace!", MessageBoxButton.OK);
+                System.Windows.MessageBox.Show(exception.Message, Properties.Resources.MW_VALIDATION_ERROR_TITLE, MessageBoxButton.OK);
             }
             refreshReserveList();
             clearManualForm();
@@ -369,7 +359,7 @@ namespace DungeonMasterScreen
                 }
                 catch (ValidationException ex)
                 {
-                    System.Windows.MessageBox.Show(ex.Message, "Chyba validace!", MessageBoxButton.OK);
+                    System.Windows.MessageBox.Show(ex.Message, Properties.Resources.MW_VALIDATION_ERROR_TITLE, MessageBoxButton.OK);
                 }
             }
             refreshAll();
@@ -436,7 +426,7 @@ namespace DungeonMasterScreen
                 {
                     if (health<0)
                     {
-                        System.Windows.MessageBox.Show("Životy musí být kladné!", "Nejde oživit!", MessageBoxButton.OK);
+                        System.Windows.MessageBox.Show(Properties.Resources.MW_LIFE_ERROR_POPUP, Properties.Resources.MW_RESURRECT_ERROR_TITLE, MessageBoxButton.OK);
                     }
                     else
                     {
@@ -453,7 +443,7 @@ namespace DungeonMasterScreen
             if (reserveMonstersListView.SelectedItem!=null)
             {
                 MonsterDto dto = manualController.FindReserveMonsterById((reserveMonstersListView.SelectedItem as ManualView).Id);
-                MessageBoxResult result = System.Windows.MessageBox.Show("Opravdu odstranit toto monstrum z bestiáře trvale?", "Odstranit monstrum", MessageBoxButton.YesNo);
+                MessageBoxResult result = System.Windows.MessageBox.Show(Properties.Resources.MW_REMOVE_MONSTER_TEXT, Properties.Resources.MW_REMOVE_MONSTER_TITLE, MessageBoxButton.YesNo);
                 if (result==MessageBoxResult.Yes)
                 {
                     manualController.RemoveMonster(dto);
@@ -464,7 +454,7 @@ namespace DungeonMasterScreen
         }
 
         private void showErrorManipulatingWithManual(string message) {
-            System.Windows.MessageBox.Show(message, "Chyba bestiáře", MessageBoxButton.OK);
+            System.Windows.MessageBox.Show(message, Properties.Resources.MW_MANUAL_ERROR, MessageBoxButton.OK);
         }
 
         private void loadMonster_Click(object sender, RoutedEventArgs e)
@@ -482,7 +472,7 @@ namespace DungeonMasterScreen
                     catch (MonsterManualOpenException ex)
                     {
 
-                        System.Windows.MessageBox.Show(ex.Message, "Chyba importu", MessageBoxButton.OK);
+                        System.Windows.MessageBox.Show(ex.Message, Properties.Resources.MW_IMPORT_ERROR_TITLE, MessageBoxButton.OK);
                     }
                     refreshReserveList();
                 }
@@ -504,7 +494,7 @@ namespace DungeonMasterScreen
                     catch (Exception)
                     {
 
-                        System.Windows.MessageBox.Show("Monstrum se nezdařilo exportovat");
+                        System.Windows.MessageBox.Show(Properties.Resources.MW_MONSTER_EXPORT_ERROR);
                     }
                 }
             }

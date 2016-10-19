@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DungeonMasterScreen.Model;
 using DungeonMasterScreen.Files;
 using DungeonMasterScreen.Exceptions;
+using DungeonMasterScreen.Properties;
 using System.IO;
 
 namespace DungeonMasterScreen.Controller
@@ -106,7 +107,7 @@ namespace DungeonMasterScreen.Controller
             }
             else
             {
-                throw new MonsterManualOpenException("Nelze otevřít bestiář, protože je již otevřen!");
+                throw new MonsterManualOpenException(Resources.MC_MANUAL_OPEN_ERROR);
             }
             
 
@@ -122,13 +123,13 @@ namespace DungeonMasterScreen.Controller
                 }
                 catch (IOException e)
                 {
-                    throw new MonsterManualOpenException(string.Format("Nepodařilo se zapsat do bestiáře z důvodu:{0}", e.Message));
+                    throw new MonsterManualOpenException(string.Format(Resources.MC_MANUAL_WRITE_ERROR, e.Message));
                 }                
                 isManualOpen = false;
             }
             else
             {
-                throw new MonsterManualOpenException("Nelze uložit bestiář, protože ještě není otevřen!");
+                throw new MonsterManualOpenException(Resources.MC_MANUAL_INITIALIZATION_ERROR);
             }
         }
 
@@ -141,7 +142,7 @@ namespace DungeonMasterScreen.Controller
             }
             catch (FileFormatException e)
             {
-                throw new MonsterManualOpenException(string.Format("Nepodařilo se importovat monstrum ze souboru {0} zu důvodu {1}",filePath,e.Message));
+                throw new MonsterManualOpenException(string.Format(Resources.MC_IMPORT_ERROR,filePath,e.Message));
             }            
             if (monster!=null)
             {

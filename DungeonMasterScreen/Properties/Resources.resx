@@ -117,4 +117,101 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CC_COMBAT_ENTER" xml:space="preserve">
+    <value>{0} vstoupil do souboje s iniciativou: {1}</value>
+  </data>
+  <data name="CC_DAMAGE_LOG" xml:space="preserve">
+    <value>byl zraněn za:</value>
+  </data>
+  <data name="CC_HEALING_LOG" xml:space="preserve">
+    <value> byl vyléčen za:</value>
+  </data>
+  <data name="CC_INITIATIVE_CHANGE" xml:space="preserve">
+    <value>změnil iniciativu na {0}.</value>
+  </data>
+  <data name="CC_NEW_LIFE_COUNT" xml:space="preserve">
+    <value>{0} a jeho aktuální počet životů je {1}.</value>
+  </data>
+  <data name="CC_NEXT_TURN" xml:space="preserve">
+    <value>Další kolo:{0}</value>
+  </data>
+  <data name="CC_REMOVE_FROM_COMBAT" xml:space="preserve">
+    <value>{0} byl odstraněn ze souboje</value>
+  </data>
+  <data name="CC_UNKNOWN_EVENT" xml:space="preserve">
+    <value>{0} hodilo neznámou eventu!</value>
+    <comment>CombatController neznámá eventa</comment>
+  </data>
+  <data name="FC_FORMAT_ERROR" xml:space="preserve">
+    <value>Tohle není soubor s monstrem!</value>
+  </data>
+  <data name="FC_OPEN_FAILURE" xml:space="preserve">
+    <value>Nepodařilo se přečíst bestiář.</value>
+  </data>
+  <data name="FC_SAVE_FAILURE" xml:space="preserve">
+    <value>Nepodařilo se uložit bestiář z důvodu {0}</value>
+  </data>
+  <data name="MC_IMPORT_ERROR" xml:space="preserve">
+    <value>Nepodařilo se importovat monstrum ze souboru {0} zu důvodu {1}</value>
+  </data>
+  <data name="MC_MANUAL_INITIALIZATION_ERROR" xml:space="preserve">
+    <value>Nelze uložit bestiář, protože ještě není otevřen!</value>
+  </data>
+  <data name="MC_MANUAL_OPEN_ERROR" xml:space="preserve">
+    <value>Nelze otevřít bestiář, protože je již otevřen!</value>
+  </data>
+  <data name="MC_MANUAL_WRITE_ERROR" xml:space="preserve">
+    <value>Nepodařilo se zapsat do bestiáře z důvodu:{0}</value>
+  </data>
+  <data name="MP_DEFENSE_WARNING" xml:space="preserve">
+    <value>Obrana musí být číslo!</value>
+  </data>
+  <data name="MP_EMPTY_MONSTER" xml:space="preserve">
+    <value>Musí být vyplněno monstrum!</value>
+  </data>
+  <data name="MP_INITIATIVE_WARNING" xml:space="preserve">
+    <value>Iniciativa musí být číslo!</value>
+  </data>
+  <data name="MP_INVALID_MONSTER_FORMAT" xml:space="preserve">
+    <value>Invalid numbers of arguments passed as monster. Passed number %s, expected number %s</value>
+  </data>
+  <data name="MP_LIFE_WARNING" xml:space="preserve">
+    <value>Životy msí být číslo!</value>
+  </data>
+  <data name="MP_NAME_WARNING" xml:space="preserve">
+    <value>Jméno nesmí být prázdné!</value>
+  </data>
+  <data name="MW_ERROR_TITLE" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="MW_IMPORT_ERROR_TITLE" xml:space="preserve">
+    <value>Chyba importu</value>
+  </data>
+  <data name="MW_LIFE_ERROR_POPUP" xml:space="preserve">
+    <value>Životy musí být kladné!</value>
+  </data>
+  <data name="MW_MANUAL_ERROR" xml:space="preserve">
+    <value>Chyba bestiáře</value>
+  </data>
+  <data name="MW_MANUAL_OPEN_ERROR" xml:space="preserve">
+    <value>Chyba otevření Monster manuálu</value>
+  </data>
+  <data name="MW_MONSTER_EXPORT_ERROR" xml:space="preserve">
+    <value>Monstrum se nezdařilo exportovat</value>
+  </data>
+  <data name="MW_NUMBER_VALIDATION_ERROR" xml:space="preserve">
+    <value>Zadaná hodnota musí být číslo!</value>
+  </data>
+  <data name="MW_REMOVE_MONSTER_TEXT" xml:space="preserve">
+    <value>Opravdu odstranit toto monstrum z bestiáře trvale?</value>
+  </data>
+  <data name="MW_REMOVE_MONSTER_TITLE" xml:space="preserve">
+    <value>Odstranit monstrum</value>
+  </data>
+  <data name="MW_RESURRECT_ERROR_TITLE" xml:space="preserve">
+    <value>Nejde oživit!</value>
+  </data>
+  <data name="MW_VALIDATION_ERROR_TITLE" xml:space="preserve">
+    <value>Chyba validace!</value>
+  </data>
 </root>

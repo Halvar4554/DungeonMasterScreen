@@ -22,7 +22,7 @@ namespace DungeonMasterScreen.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace DungeonMasterScreen.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DungeonMasterScreen.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,300 @@ namespace DungeonMasterScreen.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} vstoupil do souboje s iniciativou: {1}.
+        /// </summary>
+        public static string CC_COMBAT_ENTER {
+            get {
+                return ResourceManager.GetString("CC_COMBAT_ENTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to byl zraněn za:.
+        /// </summary>
+        public static string CC_DAMAGE_LOG {
+            get {
+                return ResourceManager.GetString("CC_DAMAGE_LOG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  byl vyléčen za:.
+        /// </summary>
+        public static string CC_HEALING_LOG {
+            get {
+                return ResourceManager.GetString("CC_HEALING_LOG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to změnil iniciativu na {0}..
+        /// </summary>
+        public static string CC_INITIATIVE_CHANGE {
+            get {
+                return ResourceManager.GetString("CC_INITIATIVE_CHANGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} a jeho aktuální počet životů je {1}..
+        /// </summary>
+        public static string CC_NEW_LIFE_COUNT {
+            get {
+                return ResourceManager.GetString("CC_NEW_LIFE_COUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Další kolo:{0}.
+        /// </summary>
+        public static string CC_NEXT_TURN {
+            get {
+                return ResourceManager.GetString("CC_NEXT_TURN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} byl odstraněn ze souboje.
+        /// </summary>
+        public static string CC_REMOVE_FROM_COMBAT {
+            get {
+                return ResourceManager.GetString("CC_REMOVE_FROM_COMBAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} hodilo neznámou eventu!.
+        /// </summary>
+        public static string CC_UNKNOWN_EVENT {
+            get {
+                return ResourceManager.GetString("CC_UNKNOWN_EVENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tohle není soubor s monstrem!.
+        /// </summary>
+        public static string FC_FORMAT_ERROR {
+            get {
+                return ResourceManager.GetString("FC_FORMAT_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nepodařilo se přečíst bestiář..
+        /// </summary>
+        public static string FC_OPEN_FAILURE {
+            get {
+                return ResourceManager.GetString("FC_OPEN_FAILURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nepodařilo se uložit bestiář z důvodu {0}.
+        /// </summary>
+        public static string FC_SAVE_FAILURE {
+            get {
+                return ResourceManager.GetString("FC_SAVE_FAILURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nepodařilo se importovat monstrum ze souboru {0} zu důvodu {1}.
+        /// </summary>
+        public static string MC_IMPORT_ERROR {
+            get {
+                return ResourceManager.GetString("MC_IMPORT_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nelze uložit bestiář, protože ještě není otevřen!.
+        /// </summary>
+        public static string MC_MANUAL_INITIALIZATION_ERROR {
+            get {
+                return ResourceManager.GetString("MC_MANUAL_INITIALIZATION_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nelze otevřít bestiář, protože je již otevřen!.
+        /// </summary>
+        public static string MC_MANUAL_OPEN_ERROR {
+            get {
+                return ResourceManager.GetString("MC_MANUAL_OPEN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nepodařilo se zapsat do bestiáře z důvodu:{0}.
+        /// </summary>
+        public static string MC_MANUAL_WRITE_ERROR {
+            get {
+                return ResourceManager.GetString("MC_MANUAL_WRITE_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obrana musí být číslo!.
+        /// </summary>
+        public static string MP_DEFENSE_WARNING {
+            get {
+                return ResourceManager.GetString("MP_DEFENSE_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Musí být vyplněno monstrum!.
+        /// </summary>
+        public static string MP_EMPTY_MONSTER {
+            get {
+                return ResourceManager.GetString("MP_EMPTY_MONSTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iniciativa musí být číslo!.
+        /// </summary>
+        public static string MP_INITIATIVE_WARNING {
+            get {
+                return ResourceManager.GetString("MP_INITIATIVE_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid numbers of arguments passed as monster. Passed number %s, expected number %s.
+        /// </summary>
+        public static string MP_INVALID_MONSTER_FORMAT {
+            get {
+                return ResourceManager.GetString("MP_INVALID_MONSTER_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Životy msí být číslo!.
+        /// </summary>
+        public static string MP_LIFE_WARNING {
+            get {
+                return ResourceManager.GetString("MP_LIFE_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jméno nesmí být prázdné!.
+        /// </summary>
+        public static string MP_NAME_WARNING {
+            get {
+                return ResourceManager.GetString("MP_NAME_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba.
+        /// </summary>
+        public static string MW_ERROR_TITLE {
+            get {
+                return ResourceManager.GetString("MW_ERROR_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba importu.
+        /// </summary>
+        public static string MW_IMPORT_ERROR_TITLE {
+            get {
+                return ResourceManager.GetString("MW_IMPORT_ERROR_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Životy musí být kladné!.
+        /// </summary>
+        public static string MW_LIFE_ERROR_POPUP {
+            get {
+                return ResourceManager.GetString("MW_LIFE_ERROR_POPUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba bestiáře.
+        /// </summary>
+        public static string MW_MANUAL_ERROR {
+            get {
+                return ResourceManager.GetString("MW_MANUAL_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba otevření Monster manuálu.
+        /// </summary>
+        public static string MW_MANUAL_OPEN_ERROR {
+            get {
+                return ResourceManager.GetString("MW_MANUAL_OPEN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monstrum se nezdařilo exportovat.
+        /// </summary>
+        public static string MW_MONSTER_EXPORT_ERROR {
+            get {
+                return ResourceManager.GetString("MW_MONSTER_EXPORT_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadaná hodnota musí být číslo!.
+        /// </summary>
+        public static string MW_NUMBER_VALIDATION_ERROR {
+            get {
+                return ResourceManager.GetString("MW_NUMBER_VALIDATION_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opravdu odstranit toto monstrum z bestiáře trvale?.
+        /// </summary>
+        public static string MW_REMOVE_MONSTER_TEXT {
+            get {
+                return ResourceManager.GetString("MW_REMOVE_MONSTER_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odstranit monstrum.
+        /// </summary>
+        public static string MW_REMOVE_MONSTER_TITLE {
+            get {
+                return ResourceManager.GetString("MW_REMOVE_MONSTER_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nejde oživit!.
+        /// </summary>
+        public static string MW_RESURRECT_ERROR_TITLE {
+            get {
+                return ResourceManager.GetString("MW_RESURRECT_ERROR_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba validace!.
+        /// </summary>
+        public static string MW_VALIDATION_ERROR_TITLE {
+            get {
+                return ResourceManager.GetString("MW_VALIDATION_ERROR_TITLE", resourceCulture);
             }
         }
     }

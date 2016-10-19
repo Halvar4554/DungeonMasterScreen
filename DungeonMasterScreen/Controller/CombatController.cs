@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DungeonMasterScreen.Model;
 using DungeonMasterScreen.Exceptions;
 using DungeonMasterScreen.Events;
+using DungeonMasterScreen.Properties;
 
 namespace DungeonMasterScreen.Controller
 {
@@ -123,7 +124,7 @@ namespace DungeonMasterScreen.Controller
             }
             else
             {
-                return String.Format("{0} hodilo neznámou eventu!", e.Name);
+                return String.Format(Resources.CC_UNKNOWN_EVENT, e.Name);
             }
         }
 
@@ -131,7 +132,7 @@ namespace DungeonMasterScreen.Controller
         {
             StringBuilder builder = new StringBuilder(name);
             builder.Append(getVerbForMessage(original, updated));
-            builder.Append(String.Format("{0} a jeho aktuální počet životů je {1}.", computeDifference(original, updated), updated));
+            builder.Append(String.Format(Resources.CC_NEW_LIFE_COUNT, computeDifference(original, updated), updated));
             return builder.ToString();
         }
 
@@ -153,34 +154,34 @@ namespace DungeonMasterScreen.Controller
         {
             if (original < updated)
             {
-                return " byl vyléčen za:";
+                return Resources.CC_HEALING_LOG;
             }
             else
             {
-                return " byl zraněn za:";
+                return Resources.CC_DAMAGE_LOG;
             }
         }
 
         private string buildInitiativeChangeMessage(string name, int initiative)
         {
             StringBuilder builder = new StringBuilder(name);
-            builder.Append(String.Format(" změnil iniciativu na {0}.", initiative));
+            builder.Append(String.Format(Resources.CC_INITIATIVE_CHANGE, initiative));
             return builder.ToString();
         }
 
         private void fireMonsterAddedEvent(string name,int initiative) {
-            string message = String.Format("{0} vstoupil do souboje s iniciativou: {1}", name, initiative);
+            string message = String.Format(Resources.CC_COMBAT_ENTER, name, initiative);
             fireEvent(message);
         }
 
         private void fireMonsterRemovedEvent(string name) {
-            string message = String.Format("{0} byl odstraněn ze souboje", name);
+            string message = String.Format(Resources.CC_REMOVE_FROM_COMBAT, name);
             fireEvent(message);
         }
 
         private void fireNewTurnEvent(int turn)
         {
-            string message = String.Format("Další kolo:{0}", turn);
+            string message = String.Format(Resources.CC_NEXT_TURN, turn);
             fireEvent(message);
         }
 

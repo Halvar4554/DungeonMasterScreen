@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DungeonMasterScreen.Model;
 using DungeonMasterScreen.Core;
 using DungeonMasterScreen.Exceptions;
+using DungeonMasterScreen.Properties;
 
 namespace DungeonMasterScreen.Controller
 {
@@ -34,7 +35,7 @@ namespace DungeonMasterScreen.Controller
             }
             else
             {
-                throw new MonsterParseException(String.Format("Invalid numbers of arguments passed as monster. Passed number %s, expected number %s", parts.Length, Constants.NUMBER_OF_ATTRIBUTES));
+                throw new MonsterParseException(String.Format(Resources.MP_INVALID_MONSTER_FORMAT, parts.Length, Constants.NUMBER_OF_ATTRIBUTES));
             }
         }
 
@@ -105,24 +106,24 @@ namespace DungeonMasterScreen.Controller
         {
             if (dto == null)
             {
-                throw new ValidationException("Musí být vyplněno monstrum!");
+                throw new ValidationException(Resources.MP_EMPTY_MONSTER);
             }
             int numberVariable;
             if (!int.TryParse(dto.initiative, out numberVariable))
             {
-                throw new ValidationException("Iniciativa musí být číslo!");
+                throw new ValidationException(Resources.MP_INITIATIVE_WARNING);
             }
             if (dto.name == null)
             {
-                throw new ValidationException("Jméno nesmí být prázdné!");
+                throw new ValidationException(Resources.MP_NAME_WARNING);
             }
             if (dto.defense != null && dto.defense != String.Empty && !int.TryParse(dto.defense, out numberVariable))
             {
-                throw new ValidationException("Obrana musí být číslo!");
+                throw new ValidationException(Resources.MP_DEFENSE_WARNING);
             }
             if (dto.lifes != null && dto.lifes != String.Empty && !int.TryParse(dto.lifes, out numberVariable))
             {
-                throw new ValidationException("Životy msí být číslo!");
+                throw new ValidationException(Resources.MP_LIFE_WARNING);
             }
         }
 
