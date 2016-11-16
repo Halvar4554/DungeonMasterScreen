@@ -142,6 +142,9 @@
     <value>{0} hodilo neznámou eventu!</value>
     <comment>CombatController neznámá eventa</comment>
   </data>
+  <data name="FC_ENCOUNTER_IMPORT_ERROR" xml:space="preserve">
+    <value>Toto není soubor se soubojem!</value>
+  </data>
   <data name="FC_FORMAT_ERROR" xml:space="preserve">
     <value>Tohle není soubor s monstrem!</value>
   </data>

@@ -21,6 +21,11 @@ namespace DungeonMasterScreen.Core
         public const string MONSTER_MANUAL_FORMAT = "b";
         public const string MONSTER_FILE_FORMAT = "m";
         public const string FIGHT_FILE_FORMAT = "s";
+        public const int FIGHT_FORMAT_INDEX = 0;
+        public const int MONSTER_COUNT_INDEX = 1;
+        public const int ACTUAL_TURN_INDEX = 2;
+        public const int ACTUAL_COMBATANT_INDEX = 3;
+        public const int FIGHT_FORMAT_PARAMS_COUNT = 4;
         public const string FILE_FILTER = "Text files (*.txt)|*.txt";
     }
 }

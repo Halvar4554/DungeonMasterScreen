@@ -133,6 +133,15 @@ namespace DungeonMasterScreen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toto není soubor se soubojem!.
+        /// </summary>
+        public static string FC_ENCOUNTER_IMPORT_ERROR {
+            get {
+                return ResourceManager.GetString("FC_ENCOUNTER_IMPORT_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tohle není soubor s monstrem!.
         /// </summary>
         public static string FC_FORMAT_ERROR {

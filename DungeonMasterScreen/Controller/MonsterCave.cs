@@ -124,9 +124,19 @@ namespace DungeonMasterScreen.Controller
             fireActiveMonsterCountChangedEvent(oldCount, ActiveMonstersCount);
         }
 
+        public void ClearActiveMonsters() {
+            int oldCount = ActiveMonstersCount;
+            foreach (Monster actualMonster in activeMonsters.Reverse<Monster>())
+            {
+                deadMonsters.Add(actualMonster);
+                activeMonsters.Remove(actualMonster);
+            }
+            fireActiveMonsterCountChangedEvent(oldCount, ActiveMonstersCount);
+        }
+
         public void RemoveMonster(int id)
         {
-            Monster monster = reserveMonsters.Find(find => find.Id == id);
+            Monster monster = reserveMonsters.Find(actualMonster => actualMonster.Id == id);
             if (monster != null)
             {
                 reserveMonsters.Remove(monster);
