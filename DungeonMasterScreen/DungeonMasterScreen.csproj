@@ -80,6 +80,7 @@
     <Compile Include="Events\MonsterCountChangedEventArgs.cs" />
     <Compile Include="Events\NewMonsterEventArgs.cs" />
     <Compile Include="Events\NewTurnEventArgs.cs" />
+    <Compile Include="Exceptions\FightParamParsingException.cs" />
     <Compile Include="Exceptions\MonsterManualOpenException.cs" />
     <Compile Include="Exceptions\MonsterParseException.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />
@@ -90,6 +91,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\EncounterCarrier.cs" />
     <Compile Include="Model\ManualView.cs" />
     <Compile Include="Model\Monster.cs" />
     <Compile Include="Model\MonsterDto.cs" />
@@ -108,7 +110,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
