@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonMasterScreen.Exceptions
 {
-    class MonsterManualOpenException:InvalidOperationException
+    public class MonsterManualOpenException:InvalidOperationException
     {
         public MonsterManualOpenException(string message) : base(message) { }
     }

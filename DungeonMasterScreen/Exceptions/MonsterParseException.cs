@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonMasterScreen.Exceptions
 {
-    class MonsterParseException:ArgumentException
+    public class MonsterParseException:ArgumentException
     {
         public MonsterParseException():base() { }
 

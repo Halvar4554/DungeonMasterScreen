@@ -103,6 +103,7 @@ namespace DungeonMasterScreen.Files
                         EncounterCarrier result = new EncounterCarrier();
                         extractBasicAttributes(lineParts, result);
                         readEncounterFile(reader, result, parseLineParam(lineParts[Constants.MONSTER_COUNT_INDEX]));
+                        return result;
                     }
                 }
                 catch (IOException e)

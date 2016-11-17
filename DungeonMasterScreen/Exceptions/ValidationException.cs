@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonMasterScreen.Exceptions
 {
-    class ValidationException:ArgumentException
+    public class ValidationException:ArgumentException
     {
         public ValidationException() : base() { }
 

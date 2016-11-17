@@ -1,0 +1,2 @@
+k
+Bojový droid;1;100;+15/+10;1k8+6;20;Střílí magické střely a to i na blízko.

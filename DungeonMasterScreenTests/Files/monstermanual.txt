@@ -1,0 +1,5 @@
+b
+Stín u dvp;24;90;+19;1k8+4/ 18-20 /x4;19;procházení stínem
+Stín Alevana;18;80;+17;1k8+4/18-20 x4;19;procházení stínem.
+Stín u dvl;13;90;+16;1k8+4/18-20 x4;18;procházení stínem
+Stín v chodbě;6;90;+17;1k8+4/ 18-10 x4;19;procházení stínem
