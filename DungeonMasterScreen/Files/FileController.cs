@@ -116,6 +116,22 @@ namespace DungeonMasterScreen.Files
 
         }
 
+        public void ExportEncounter(string filePath, EncounterCarrier encounter) {
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                try
+                {
+                    writer.WriteLine(createFirstLine(encounter));
+                    writeEncounter(encounter, writer);
+                }
+                catch (IOException e)
+                {
+                    throw new EncounterSaveException(string.Format(Resources.FC_ENCOUNTER_EXPORT_ERROR, e.Message));
+                }
+
+            }
+        }
+
         private void extractBasicAttributes(string[] lineParts, EncounterCarrier result)
         {
             try
@@ -175,5 +191,36 @@ namespace DungeonMasterScreen.Files
             return logEntries;
         }
 
+        private string createFirstLine(EncounterCarrier encounter) {
+            StringBuilder builder = new StringBuilder(Constants.FIGHT_FILE_FORMAT);
+            builder.Append(" ").Append(encounter.Monsters.Count);
+            builder.Append(" ").Append(encounter.ActualTurn);
+            builder.Append(" ").Append(encounter.ActualCombatant);
+            return builder.ToString();
+        }
+
+        /// <summary>
+        /// Write encounter in proper order. At first monsters are written, after last monster all log entries are written.
+        /// </summary>
+        /// <param name="encounter">One <see cref="EncounterCarrier"/> which we want to export into</param>
+        /// <param name="writer">this <see cref="StreamWriter"/> output.</param>
+        private void writeEncounter(EncounterCarrier encounter, StreamWriter writer) {
+            writeMonsters(encounter.Monsters, writer);
+            writeLogEntries(encounter.BattleLog,writer);
+        }
+
+        private void writeMonsters(List<Monster> monsters, StreamWriter writer) {
+            foreach (Monster monster in monsters)
+            {
+                writer.WriteLine(MonsterParser.parseMonsterIntoString(monster));
+            }
+        }
+
+        private void writeLogEntries(List<String> logEntries, StreamWriter writer) {
+            foreach (string entry in logEntries)
+            {
+                writer.WriteLine(entry);
+            }
+        }
     }
 }

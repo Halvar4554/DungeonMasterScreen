@@ -133,6 +133,15 @@ namespace DungeonMasterScreen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nepodařilo se exportovat souboj z důvodu {0}.
+        /// </summary>
+        public static string FC_ENCOUNTER_EXPORT_ERROR {
+            get {
+                return ResourceManager.GetString("FC_ENCOUNTER_EXPORT_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toto není soubor se soubojem!.
         /// </summary>
         public static string FC_ENCOUNTER_IMPORT_ERROR {

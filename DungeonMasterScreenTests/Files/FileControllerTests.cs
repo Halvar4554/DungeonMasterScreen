@@ -85,6 +85,17 @@ namespace DungeonMasterScreen.Files.Tests
         [TestMethod]
         public void ExportEncounterTest() {
             FileController cnt = new FileController();
+            Model.EncounterCarrier initialEncounter = cnt.ImportEncounter("D:\\work\\DungeonMasterScreen\\DungeonMasterScreenTests\\Files\\finale.txt");
+            Assert.IsNotNull(initialEncounter);
+            cnt.ExportEncounter("D:\\work\\DungeonMasterScreen\\DungeonMasterScreenTests\\Files\\ExportedFinale.txt", initialEncounter);
+            Model.EncounterCarrier loadedEncounter = cnt.ImportEncounter("D:\\work\\DungeonMasterScreen\\DungeonMasterScreenTests\\Files\\ExportedFinale.txt");
+            Assert.IsNotNull(loadedEncounter);
+            Assert.IsNotNull(loadedEncounter.Monsters);
+            Assert.IsNotNull(loadedEncounter.BattleLog);
+            Assert.AreEqual(4, loadedEncounter.Monsters.Count);
+            Assert.AreEqual(29, loadedEncounter.BattleLog.Count);
+            Assert.AreEqual(3, loadedEncounter.ActualCombatant);
+            Assert.AreEqual(12, loadedEncounter.ActualTurn);
         }
     }
 }
