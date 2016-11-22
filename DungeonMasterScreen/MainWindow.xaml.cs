@@ -181,7 +181,7 @@ namespace DungeonMasterScreen
         private void actualizeCombatForm() {
             if (actualSelectedMonster!=null)
             {
-                MonsterDto monster= combatController.FindMonsterById(actualSelectedMonster.id);
+                MonsterDto monster= manualController.FindMonsterById(actualSelectedMonster.id);
                 fillCombatForm(monster);
             }
         }
@@ -244,7 +244,7 @@ namespace DungeonMasterScreen
             if (fightlistView.SelectedItem != null)
             {
                 int id = (fightlistView.SelectedItem as MonsterView).Id;
-                actualSelectedMonster = combatController.FindMonsterById(id);
+                actualSelectedMonster = manualController.FindMonsterById(id);
                 fillCombatForm(actualSelectedMonster);
             }
         }

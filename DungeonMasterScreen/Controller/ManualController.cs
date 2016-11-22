@@ -11,7 +11,10 @@ using System.IO;
 
 namespace DungeonMasterScreen.Controller
 {
-    class ManualController
+    /// <summary>
+    /// Kontrolér, který je zodpovědný za obsluhu záložky Monster manual
+    /// </summary>
+    public class ManualController
     {
         private FileController fileController = new FileController();
 

@@ -9,16 +9,18 @@
     <Grid Margin="0,52,0,0" Background="Maroon">
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="47" Margin="0,-52,0,0" VerticalAlignment="Top" Width="1792">
             <MenuItem Header="Soubor" Height="42" Width="90" FontFamily="Calibri" FontSize="24" Foreground="RoyalBlue">
+                <MenuItem Header="Nový souboj" Name="newCombat" HorizontalAlignment="Left"/>
+                <MenuItem Header="Uložit souboj" Name="saveCombat" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" />
+                <MenuItem Header="Načíst souboj" Name="loadCombat" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" />
                 <MenuItem Name="endMenuItem" Header="Konec" HorizontalAlignment="Left" Width="187" Click="endMenuItem_Click" Margin="0,0,-47,0"/>
             </MenuItem>
             <MenuItem Header="Bestiář" Height="42" Width="100" FontFamily="Calibri" FontSize="24" Foreground="RoyalBlue" >
                 <MenuItem Header="Importovat monstrum" Name="loadMonster" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" Click="loadMonster_Click"/>
-                <MenuItem Header="Exportovat monstrum" Name="exportMonster" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" Click="exportMonster_Click" />
-                <MenuItem Header="Uložit souboj" Name="saveCombat" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" />
-                <MenuItem Header="Načíst souboj" Name="loadCombat" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" />
+                <MenuItem Header="Exportovat monstrum" Name="exportMonster" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" Click="exportMonster_Click" />                
             </MenuItem>
             <MenuItem Header="Nástroje" HorizontalAlignment="Left" Width="100" FontFamily="Calibri" FontSize="24" Foreground="RoyalBlue">
                 <MenuItem Header="Konverze jednotek" HorizontalAlignment="Left" Name="conversionMenuItem"/>
+                <MenuItem Header="Timer" HorizontalAlignment="Left" Name="timetMenuItem"/>
             </MenuItem>
         </Menu>
         <TabControl x:Name="moduleTabs" Margin="0,0,0,-52" IsSynchronizedWithCurrentItem="True" SelectedIndex="1" Width="1792" Height="969" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16">

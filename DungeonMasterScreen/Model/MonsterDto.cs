@@ -10,7 +10,7 @@ namespace DungeonMasterScreen.Model
     /// <summary>
     /// Is DTO for easier handling monster attributes on gui. MonsterDto are not stored, it is simple transport object.
     /// </summary>
-    class MonsterDto
+    public class MonsterDto
     {
         public int id { get; set; }
         public string name { get; set; }

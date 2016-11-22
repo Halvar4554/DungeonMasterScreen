@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonMasterScreen.Events
 {
-    class BattleLogEventArgs
+    public class BattleLogEventArgs
     {
         public string Message { get; private set; }
 

@@ -7,9 +7,12 @@ using DungeonMasterScreen.Properties;
 
 namespace DungeonMasterScreen.Controller
 {
-    delegate void BatlleLogEventHandler(object sender, BattleLogEventArgs e);
+    public delegate void BatlleLogEventHandler(object sender, BattleLogEventArgs e);
 
-    class CombatController
+    /// <summary>
+    /// Kontrolér, který je zodpovědný za obsluhu záložky souboje a událostí okolo.
+    /// </summary>
+    public class CombatController
     {
         #region Attributes
         public TurnCounter turnCounter { get; private set; }
@@ -53,11 +56,6 @@ namespace DungeonMasterScreen.Controller
                 monsters.Add(monsterDto);
             }
             return monsters;
-        }
-
-        public MonsterDto FindMonsterById(int id)
-        {
-            return MonsterParser.convertMonsterIntoDto(getMonsterCave().FindActiveMonsterById(id));
         }
 
         public void UpdateMonster(int id, MonsterDto dto)
