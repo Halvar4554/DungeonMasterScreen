@@ -499,5 +499,39 @@ namespace DungeonMasterScreen
                 }
             }
         }
+
+        private void newCombat_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void loadCombat_Click(object sender, RoutedEventArgs e)
+        {
+            /*TODO: 
+            1)Aktualizace zobrazeného kola
+            2)Vymazání obrazeného monstra
+            3)Před načtením nových monster je potřeba ty staré přesunout do dead monsters a active monsters vyprázdnit (Tady mám pocit, že se mi nějaká monstra ztratila)
+            */
+            EncounterCarrier encounter = null;
+            battleLog.Text = string.Empty;
+            battleLog.ScrollToEnd();
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                dialog.Filter = Constants.FILE_FILTER;
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        encounter = manualController.ImportEncounter(dialog.FileName);
+                        combatController.NewCombat(encounter);
+                    }
+                    catch (EncounterImportFailedException)
+                    {
+                        System.Windows.MessageBox.Show(Properties.Resources.MW_NEW_COMBAT_ERROR);
+                    }
+                }
+            }
+            refreshActualCombatList();
+        }
     }
 }

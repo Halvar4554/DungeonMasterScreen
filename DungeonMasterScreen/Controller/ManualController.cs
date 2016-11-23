@@ -157,5 +157,18 @@ namespace DungeonMasterScreen.Controller
             Monster monster = getMonsterCave().FindMonsterById(id);
             fileController.ExportMonster(filePath, monster);
         }
+
+        public EncounterCarrier ImportEncounter(string filePath) {
+            EncounterCarrier encounter = new EncounterCarrier();
+            try
+            {
+                encounter = fileController.ImportEncounter(filePath);
+            }
+            catch (FileFormatException e)
+            {
+                throw new EncounterImportFailedException(e.Message);
+            }
+            return encounter;
+        }
     }
 }

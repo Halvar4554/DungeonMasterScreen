@@ -86,6 +86,19 @@ namespace DungeonMasterScreen.Controller
             return turnCounter.ActualCombatant;
         }
 
+        public void NewCombat(EncounterCarrier encounter) {
+            foreach (Monster monster in encounter.Monsters)
+            {
+                monster.MonsterChange += Monster_MonsterChange;
+                getMonsterCave().AddMonster(monster);
+            }
+            foreach (string logEntry in encounter.BattleLog)
+            {
+                fireEvent(logEntry);
+            }
+            turnCounter.SetNewEncounter(encounter.ActualTurn, encounter.ActualCombatant, encounter.Monsters.Count);
+        }
+
         #endregion
         #region Private members
 

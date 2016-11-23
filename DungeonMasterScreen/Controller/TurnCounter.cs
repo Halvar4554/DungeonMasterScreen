@@ -8,7 +8,7 @@ using DungeonMasterScreen.Events;
 namespace DungeonMasterScreen.Controller
 {
 
-   public delegate void NewTurnEventHandler(object sender, NewTurnEventArgs e);
+    public delegate void NewTurnEventHandler(object sender, NewTurnEventArgs e);
 
     public class TurnCounter
     {
@@ -24,14 +24,22 @@ namespace DungeonMasterScreen.Controller
             ActualCombatant = 0;
         }
 
-        public void SetMonsterListener() {
+        public void SetMonsterListener()
+        {
             MonsterCaveFactory.getMonsterCaveInstance().ActiveMonstersChanged += TurnCounter_ActiveMonstersChanged;
+        }
+
+        public void SetNewEncounter(int actualTurn, int actualCombatant, int countOfMonsters)
+        {
+            ActualTurn = actualTurn;
+            ActualCombatant = actualCombatant;
+            CountOfMonsters = countOfMonsters;
         }
 
         private void TurnCounter_ActiveMonstersChanged(object sender, MonsterCountChangedEventArgs e)
         {
             int difference = e.NewCount - e.OldCount;
-            if (difference>0)
+            if (difference > 0)
             {
                 increaseNumberOfCombatants();
             }
@@ -43,7 +51,7 @@ namespace DungeonMasterScreen.Controller
 
         public void NextInOrder()
         {
-            if (CountOfMonsters>0)
+            if (CountOfMonsters > 0)
             {
                 handleNextInOrder();
             }
@@ -78,7 +86,7 @@ namespace DungeonMasterScreen.Controller
 
         public void decreaseNumberOfCombatants()
         {
-            if (CountOfMonsters>0)
+            if (CountOfMonsters > 0)
             {
                 CountOfMonsters--;
             }
@@ -90,7 +98,7 @@ namespace DungeonMasterScreen.Controller
 
         protected virtual void OnChange(NewTurnEventArgs e)
         {
-            if (NewTurn!=null)
+            if (NewTurn != null)
             {
                 NewTurn(this, e);
             }

@@ -133,6 +133,15 @@ namespace DungeonMasterScreen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nepovedlo se načíst souboj z důvodu {0}.
+        /// </summary>
+        public static string EIFE_ERROR_MESSAGE {
+            get {
+                return ResourceManager.GetString("EIFE_ERROR_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nepodařilo se exportovat souboj z důvodu {0}.
         /// </summary>
         public static string FC_ENCOUNTER_EXPORT_ERROR {
@@ -318,6 +327,15 @@ namespace DungeonMasterScreen.Properties {
         public static string MW_MONSTER_EXPORT_ERROR {
             get {
                 return ResourceManager.GetString("MW_MONSTER_EXPORT_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nepodařilo se otevřít souboj.
+        /// </summary>
+        public static string MW_NEW_COMBAT_ERROR {
+            get {
+                return ResourceManager.GetString("MW_NEW_COMBAT_ERROR", resourceCulture);
             }
         }
         

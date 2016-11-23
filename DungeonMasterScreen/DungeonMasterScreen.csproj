@@ -95,6 +95,7 @@
     <Compile Include="Events\MonsterCountChangedEventArgs.cs" />
     <Compile Include="Events\NewMonsterEventArgs.cs" />
     <Compile Include="Events\NewTurnEventArgs.cs" />
+    <Compile Include="Exceptions\EncounterImportFailedException.cs" />
     <Compile Include="Exceptions\EncounterSaveException.cs" />
     <Compile Include="Exceptions\FightParamParsingException.cs" />
     <Compile Include="Exceptions\MonsterManualOpenException.cs" />
