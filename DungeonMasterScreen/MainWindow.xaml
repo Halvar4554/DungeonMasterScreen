@@ -10,7 +10,7 @@
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="47" Margin="0,-52,0,0" VerticalAlignment="Top" Width="1792">
             <MenuItem Header="Soubor" Height="42" Width="90" FontFamily="Calibri" FontSize="24" Foreground="RoyalBlue">
                 <MenuItem Header="Nový souboj" Name="newCombat" HorizontalAlignment="Left" Click="newCombat_Click"/>
-                <MenuItem Header="Uložit souboj" Name="saveCombat" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" />
+                <MenuItem Header="Uložit souboj" Name="saveCombat" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" Click="saveCombat_Click"/>
                 <MenuItem Header="Načíst souboj" Name="loadCombat" Height="42" Width="310" Foreground="RoyalBlue" FontSize="24" Click="loadCombat_Click" />
                 <MenuItem Name="endMenuItem" Header="Konec" HorizontalAlignment="Left" Width="187" Click="endMenuItem_Click" Margin="0,0,-47,0"/>
             </MenuItem>

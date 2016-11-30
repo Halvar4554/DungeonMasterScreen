@@ -554,5 +554,13 @@ namespace DungeonMasterScreen
             battleLog.Text = string.Empty;
             battleLog.ScrollToEnd();
         }
+
+        private void saveCombat_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            TODO: Odsud vlastně jen půjde battlelog.text a zavolá se combatController, který si sestaví encounterCarrier
+            Ještě odsud musím předat filepath k souboru do kterého se bude ukládat, takže vlastně otevření saveDialogu.
+            */
+        }
     }
 }
