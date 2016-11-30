@@ -16,6 +16,7 @@ namespace DungeonMasterScreen.Model
             this.Monsters = new List<Monster>();
             this.BattleLog = new List<string>();
             this.ActualCombatant = 0;
+            this.ActualTurn = 1;
         }
 
         public int ActualCombatant { get; set; }

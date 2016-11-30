@@ -32,7 +32,7 @@ namespace DungeonMasterScreen
 
         private ObservableCollection<ManualView> deadList = new ObservableCollection<ManualView>();
 
-        private MonsterDto actualSelectedMonster=null;
+        private MonsterDto actualSelectedMonster = null;
         private int? actualSelectedId = null;
 
         public MainWindow()
@@ -46,8 +46,8 @@ namespace DungeonMasterScreen
             catch (FileFormatException e)
             {
                 MonsterCaveFactory.InitFactory(new List<Monster>());
-                System.Windows.MessageBox.Show(e.Message,Properties.Resources.MW_MANUAL_OPEN_ERROR,MessageBoxButton.OK);
-            }            
+                System.Windows.MessageBox.Show(e.Message, Properties.Resources.MW_MANUAL_OPEN_ERROR, MessageBoxButton.OK);
+            }
             combatController = new CombatController();
             combatController.BattleLogEvent += CombatController_BattleLogEvent;
             fightlistView.ItemsSource = fightList;
@@ -86,7 +86,7 @@ namespace DungeonMasterScreen
             finally
             {
                 Close();
-            }            
+            }
         }
 
         #endregion
@@ -109,7 +109,8 @@ namespace DungeonMasterScreen
             effectsTB.Text = String.Empty;
         }
 
-        private void fillCombatForm(MonsterDto dto) {
+        private void fillCombatForm(MonsterDto dto)
+        {
             initiativeTB.Text = dto.initiative;
             nameTB.Text = dto.name;
             healthTB.Text = dto.lifes;
@@ -141,16 +142,18 @@ namespace DungeonMasterScreen
             effectsManualTB.Text = dto.effects;
         }
 
-        private void refreshCombatList() {
+        private void refreshCombatList()
+        {
             fightList.Clear();
             foreach (MonsterDto dto in combatController.GetAllMonsters())
             {
-                MonsterView view = new MonsterView(dto.id,dto.initiative, dto.name, dto.lifes);
+                MonsterView view = new MonsterView(dto.id, dto.initiative, dto.name, dto.lifes);
                 fightList.Add(view);
             }
         }
 
-        private void refreshDeadList() {
+        private void refreshDeadList()
+        {
             deadList.Clear();
             foreach (MonsterDto dto in manualController.GetAllKilledMonster())
             {
@@ -159,7 +162,8 @@ namespace DungeonMasterScreen
             }
         }
 
-        private void refreshReserveList() {
+        private void refreshReserveList()
+        {
             reserveList.Clear();
             foreach (MonsterDto dto in manualController.GetAllReserveMonsters())
             {
@@ -178,10 +182,11 @@ namespace DungeonMasterScreen
             }
         }
 
-        private void actualizeCombatForm() {
-            if (actualSelectedMonster!=null)
+        private void actualizeCombatForm()
+        {
+            if (actualSelectedMonster != null)
             {
-                MonsterDto monster= manualController.FindMonsterById(actualSelectedMonster.id);
+                MonsterDto monster = manualController.FindMonsterById(actualSelectedMonster.id);
                 fillCombatForm(monster);
             }
         }
@@ -265,17 +270,17 @@ namespace DungeonMasterScreen
 
         private void modifybutton_Click(object sender, RoutedEventArgs e)
         {
-            if (actualSelectedMonster!=null)
+            if (actualSelectedMonster != null)
             {
                 combatController.UpdateMonster(actualSelectedMonster.id, fillMonsterDto());
                 refreshView();
             }
-            
+
         }
 
         private void discardButton_Click(object sender, RoutedEventArgs e)
         {
-            if (actualSelectedMonster!=null)
+            if (actualSelectedMonster != null)
             {
                 combatController.RemoveMonster(actualSelectedMonster);
                 actualSelectedMonster = null;
@@ -287,7 +292,7 @@ namespace DungeonMasterScreen
 
         private void harmButton_Click(object sender, RoutedEventArgs e)
         {
-            if (actualSelectedMonster!=null && !String.IsNullOrEmpty(modTextBox.Text))
+            if (actualSelectedMonster != null && !String.IsNullOrEmpty(modTextBox.Text))
             {
                 updateMonstersHealth(actualSelectedMonster.id, false);
                 afterMonsterUpdateRefresh();
@@ -296,14 +301,14 @@ namespace DungeonMasterScreen
 
         private void healButton_Click(object sender, RoutedEventArgs e)
         {
-            if (actualSelectedMonster!=null && !String.IsNullOrEmpty(modTextBox.Text))
+            if (actualSelectedMonster != null && !String.IsNullOrEmpty(modTextBox.Text))
             {
                 updateMonstersHealth(actualSelectedMonster.id, true);
                 afterMonsterUpdateRefresh();
             }
         }
 
-        private void updateMonstersHealth(int id,bool isHealing)
+        private void updateMonstersHealth(int id, bool isHealing)
         {
             int healthMod = 0;
             if (int.TryParse(modTextBox.Text, out healthMod))
@@ -374,7 +379,7 @@ namespace DungeonMasterScreen
 
         private void reserveMonstersListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (reserveMonstersListView.SelectedItem!=null)
+            if (reserveMonstersListView.SelectedItem != null)
             {
                 displaySelectedReserveMonster((reserveMonstersListView.SelectedItem as ManualView).Id);
             }
@@ -382,7 +387,7 @@ namespace DungeonMasterScreen
 
         private void actualCombatListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (actualCombatListView.SelectedItem!=null)
+            if (actualCombatListView.SelectedItem != null)
             {
                 displaySelectedReserveMonster((actualCombatListView.SelectedItem as MonsterView).Id);
             }
@@ -390,7 +395,7 @@ namespace DungeonMasterScreen
 
         private void killedMonstersListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (killedMonstersListView.SelectedItem!=null)
+            if (killedMonstersListView.SelectedItem != null)
             {
                 displaySelectedReserveMonster((killedMonstersListView.SelectedItem as ManualView).Id);
             }
@@ -398,7 +403,7 @@ namespace DungeonMasterScreen
 
         private void addCombatButton_Click(object sender, RoutedEventArgs e)
         {
-            if (reserveMonstersListView.SelectedItem!=null)
+            if (reserveMonstersListView.SelectedItem != null)
             {
                 MonsterDto dto = manualController.FindMonsterById((reserveMonstersListView.SelectedItem as ManualView).Id);
                 combatController.AddMonsterIntoCombat(dto);
@@ -408,7 +413,7 @@ namespace DungeonMasterScreen
 
         private void discardMonsterButton_Click(object sender, RoutedEventArgs e)
         {
-            if (actualCombatListView.SelectedItem!=null)
+            if (actualCombatListView.SelectedItem != null)
             {
                 MonsterDto dto = manualController.FindMonsterById((actualCombatListView.SelectedItem as MonsterView).Id);
                 combatController.RemoveMonster(dto);
@@ -418,13 +423,13 @@ namespace DungeonMasterScreen
 
         private void resurrectButton_Click(object sender, RoutedEventArgs e)
         {
-            if (killedMonstersListView.SelectedItem!=null)
+            if (killedMonstersListView.SelectedItem != null)
             {
                 MonsterDto dto = manualController.FindMonsterById((killedMonstersListView.SelectedItem as ManualView).Id);
                 int health = 0;
-                if (int.TryParse(dto.lifes,out health))
+                if (int.TryParse(dto.lifes, out health))
                 {
-                    if (health<0)
+                    if (health < 0)
                     {
                         System.Windows.MessageBox.Show(Properties.Resources.MW_LIFE_ERROR_POPUP, Properties.Resources.MW_RESURRECT_ERROR_TITLE, MessageBoxButton.OK);
                     }
@@ -440,11 +445,11 @@ namespace DungeonMasterScreen
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (reserveMonstersListView.SelectedItem!=null)
+            if (reserveMonstersListView.SelectedItem != null)
             {
                 MonsterDto dto = manualController.FindReserveMonsterById((reserveMonstersListView.SelectedItem as ManualView).Id);
                 MessageBoxResult result = System.Windows.MessageBox.Show(Properties.Resources.MW_REMOVE_MONSTER_TEXT, Properties.Resources.MW_REMOVE_MONSTER_TITLE, MessageBoxButton.YesNo);
-                if (result==MessageBoxResult.Yes)
+                if (result == MessageBoxResult.Yes)
                 {
                     manualController.RemoveMonster(dto);
                     clearManualForm();
@@ -453,17 +458,18 @@ namespace DungeonMasterScreen
             }
         }
 
-        private void showErrorManipulatingWithManual(string message) {
+        private void showErrorManipulatingWithManual(string message)
+        {
             System.Windows.MessageBox.Show(message, Properties.Resources.MW_MANUAL_ERROR, MessageBoxButton.OK);
         }
 
         private void loadMonster_Click(object sender, RoutedEventArgs e)
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
-            {               
+            {
                 dialog.Filter = Constants.FILE_FILTER;
                 dialog.Multiselect = false;
-                if (dialog.ShowDialog()==System.Windows.Forms.DialogResult.OK)
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     try
                     {
@@ -482,14 +488,14 @@ namespace DungeonMasterScreen
 
         private void exportMonster_Click(object sender, RoutedEventArgs e)
         {
-            using (SaveFileDialog dialog=new SaveFileDialog())
+            using (SaveFileDialog dialog = new SaveFileDialog())
             {
                 dialog.Filter = Constants.FILE_FILTER;
-                if (reserveMonstersListView.SelectedItem!=null && dialog.ShowDialog()==System.Windows.Forms.DialogResult.OK)
+                if (reserveMonstersListView.SelectedItem != null && dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     try
                     {
-                        manualController.ExportMonster(dialog.FileName,(reserveMonstersListView.SelectedItem as ManualView).Id);
+                        manualController.ExportMonster(dialog.FileName, (reserveMonstersListView.SelectedItem as ManualView).Id);
                     }
                     catch (Exception)
                     {
@@ -502,19 +508,12 @@ namespace DungeonMasterScreen
 
         private void newCombat_Click(object sender, RoutedEventArgs e)
         {
-           
+            prepareFormsForNewEncounter(new EncounterCarrier());
         }
 
         private void loadCombat_Click(object sender, RoutedEventArgs e)
         {
-            /*TODO: 
-            1)Aktualizace zobrazeného kola
-            2)Vymazání obrazeného monstra
-            3)Před načtením nových monster je potřeba ty staré přesunout do dead monsters a active monsters vyprázdnit (Tady mám pocit, že se mi nějaká monstra ztratila)
-            */
-            EncounterCarrier encounter = null;
-            battleLog.Text = string.Empty;
-            battleLog.ScrollToEnd();
+            EncounterCarrier encounter = new EncounterCarrier();
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Filter = Constants.FILE_FILTER;
@@ -523,15 +522,37 @@ namespace DungeonMasterScreen
                     try
                     {
                         encounter = manualController.ImportEncounter(dialog.FileName);
-                        combatController.NewCombat(encounter);
+
                     }
                     catch (EncounterImportFailedException)
                     {
                         System.Windows.MessageBox.Show(Properties.Resources.MW_NEW_COMBAT_ERROR);
                     }
+
                 }
             }
-            refreshActualCombatList();
+            prepareFormsForNewEncounter(encounter);
+        }
+
+        private void prepareFormsForNewEncounter(EncounterCarrier encounter)
+        {
+            clearBattlelog();
+            combatController.NewCombat(encounter);
+            actualizeTurnOrder();
+            clearCombatForm();
+            refreshAll();
+        }
+
+        private void actualizeTurnOrder()
+        {
+            turnTB.Text = combatController.turnCounter.ActualTurn.ToString();
+            fightlistView.SelectedIndex = combatController.turnCounter.ActualCombatant;
+        }
+
+        private void clearBattlelog()
+        {
+            battleLog.Text = string.Empty;
+            battleLog.ScrollToEnd();
         }
     }
 }

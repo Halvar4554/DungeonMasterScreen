@@ -86,19 +86,13 @@ namespace DungeonMasterScreen.Controller
             return turnCounter.ActualCombatant;
         }
 
-        public void NewCombat(EncounterCarrier encounter) {
-            foreach (Monster monster in encounter.Monsters)
-            {
-                monster.MonsterChange += Monster_MonsterChange;
-                getMonsterCave().AddMonster(monster);
-            }
-            foreach (string logEntry in encounter.BattleLog)
-            {
-                fireEvent(logEntry);
-            }
+        public void NewCombat(EncounterCarrier encounter)
+        {
+            getMonsterCave().ClearActiveMonsters();
+            processEncounterCarrier(encounter);
             turnCounter.SetNewEncounter(encounter.ActualTurn, encounter.ActualCombatant, encounter.Monsters.Count);
         }
-
+        
         #endregion
         #region Private members
 
@@ -201,6 +195,29 @@ namespace DungeonMasterScreen.Controller
         private void TurnCounter_NewTurn(object sender, NewTurnEventArgs e)
         {
             fireNewTurnEvent(e.Turn);
+        }
+
+        private void processEncounterCarrier(EncounterCarrier encounter)
+        {
+            importMonstersIntoCombat(encounter);
+            processBattlelogEntries(encounter);
+        }
+
+        private void processBattlelogEntries(EncounterCarrier encounter)
+        {
+            foreach (string logEntry in encounter.BattleLog)
+            {
+                fireEvent(logEntry);
+            }
+        }
+
+        private void importMonstersIntoCombat(EncounterCarrier encounter)
+        {
+            foreach (Monster monster in encounter.Monsters)
+            {
+                monster.MonsterChange += Monster_MonsterChange;
+                getMonsterCave().AddMonster(monster);
+            }
         }
 
         #endregion
